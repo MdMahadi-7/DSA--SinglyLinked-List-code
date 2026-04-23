@@ -1,0 +1,75 @@
+#include<iostream>
+using namespace std;
+class Node{
+public:
+    int data;
+    Node* next=nullptr;
+};
+Node* head=nullptr;
+int main(){
+    Node* first= new Node();
+    first->data=5;
+    first->next=nullptr;
+    Node* sec=new Node();
+    sec->data=5;
+    sec->next=nullptr;
+    Node* thi=new Node();
+    thi->data=3;
+    thi->next=nullptr;
+    Node* fou=new Node();
+    fou->data=5;
+    fou->next=nullptr;
+    Node* fi=new Node();
+    fi->data=1;
+    fi->next=nullptr;
+    Node* si=new Node();
+    si->data=5;
+    si->next=nullptr;
+    Node* se=new Node();
+    se->data=9;
+    se->next=nullptr;
+
+    head=first;
+    first->next=sec;
+    sec->next=thi;
+    thi->next=fou;
+    fou->next=fi;
+    fi->next=si;
+    si->next=se;
+    se->next=head;
+
+    for(Node* ptr=head,*prv=nullptr;;){
+        if(ptr->data==5){
+                if(ptr==head){
+                    Node* load=head;
+                    while(load->next!=head) load=load->next;
+                        head=head->next;
+                        load->next=head;
+                        delete ptr;
+                        ptr=head;
+                        prv=load;
+                }
+                else{
+                    prv->next=ptr->next;
+                    Node* last=ptr;
+                    ptr=ptr->next;
+                    delete last;
+                }
+
+        }
+        else{
+                    prv=ptr;
+                    ptr=ptr->next;
+                }
+        if(ptr->next==head) break;
+    }
+
+
+
+    for(Node* ptr=head;;){
+        cout<<ptr->data<<" ";
+        ptr=ptr->next;
+        if(ptr==head) break;
+    }
+}
+
