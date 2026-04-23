@@ -1,0 +1,48 @@
+#include<iostream>
+using namespace std;
+class node{
+  public:
+  int data;
+  node* next=nullptr;
+};
+node* head=nullptr;
+node* tail=nullptr;
+int main(){
+  node* frs=new node();
+  frs->data=1;
+  frs->next=nullptr;
+
+  node* sec=new node();
+  sec->data=2;
+  sec->next=nullptr;
+
+  node* th=new node();
+  th->data=3;
+  th->next=nullptr;
+
+  node* fr=new node();
+  fr->data=4;
+  fr->next=nullptr;
+
+  head=frs;
+  frs->next=sec;
+  sec->next=th;
+  th->next=fr;
+  tail=fr;
+
+  node* newbie=new node();
+  newbie->data=10;
+  newbie->next=nullptr;
+
+  for(node*ptr=head;ptr!=nullptr;ptr=ptr->next){
+    cout<<ptr->data<<" ";
+  }
+  cout<<endl;
+
+  tail->next=newbie;
+  
+
+  for(node*ptr=head;ptr!=nullptr;ptr=ptr->next){
+    cout<<ptr->data<<" ";
+  }
+}
